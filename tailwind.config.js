@@ -9,6 +9,9 @@ export default {
       backgroundColor: {
         smooth: "rgba(0, 0, 0, 0.3)",
       },
+      fontFamily: {
+        Montserrat: "Montserrat, sans-serif",
+      },
     },
   },
   plugins: [],

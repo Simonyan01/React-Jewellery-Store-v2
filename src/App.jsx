@@ -1,11 +1,12 @@
-import UserContextProvider from 'context/createContext';
+import Header from 'components/header/Header';
 import Router from 'routes/Router';
 
 const App = () => {
   return (
-    <UserContextProvider>
+    <>
+      <Header />
       <Router />
-    </UserContextProvider>
+    </>
   )
 }
 

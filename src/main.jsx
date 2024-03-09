@@ -1,3 +1,4 @@
+import UserContextProvider from 'context/createContext.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(container)
 root.render(
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <UserContextProvider>
+                <App />
+            </UserContextProvider>
         </BrowserRouter>
     </Provider>
 )

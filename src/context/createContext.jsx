@@ -25,11 +25,7 @@ const UserContextProvider = ({ children }) => {
         console.log(currentUser)
     }, [currentUser])
 
-    const forgotPassword = (email) => {
-        return sendPasswordResetEmail(auth, email, {
-            url: `http://localhost:3000/login`,
-        })
-    }
+    const forgotPassword = (email) => sendPasswordResetEmail(auth, email, { url: `http://localhost:3000/login` })
 
     const resetPassword = (oobCode, newPassword) => confirmPasswordReset(auth, oobCode, newPassword)
 
