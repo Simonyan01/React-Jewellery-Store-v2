@@ -1,11 +1,12 @@
-import { selectData } from "features/auth/sign_up/signUpSlice"
+import { selectSignUpData } from "features/auth/sign_up/signUpSlice"
 import { useSelector } from "react-redux"
 
-export function useAuth() {
-  const { email, token, id } = useSelector(selectData)
+export const UseAuth = () => {
+  const { name, email, token, id } = useSelector(selectSignUpData)
 
   return {
     isAuth: !!email,
+    name,
     email,
     token,
     id,

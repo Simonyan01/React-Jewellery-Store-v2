@@ -1,24 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const selectData = state => state.signIn
+export const selectSignInData = state => state.signIn
 
 const initialState = {
-    userEmail: '',
-    userPwd: '',
     errMsg: '',
     loading: false,
-    open: false
+    open: false,
+    signInFormData: {
+        userEmail: '',
+        userPwd: '',
+    },
 }
 
 const signInSlice = createSlice({
     name: 'auth/sign_in',
     initialState,
     reducers: {
-        setUserEmail(state, action) {
-            state.userEmail = action.payload;
+        setFormData: (state, action) => {
+            const { field, value } = action.payload;
+            state.signInFormData = { ...state.signInFormData, [field]: value };
         },
-        setUserPwd(state, action) {
-            state.userPwd = action.payload
+        clearFormData(state) {
+            state.signInFormData = initialState.signInFormData;
         },
         setErrMsg(state, action) {
             state.errMsg = action.payload
@@ -32,6 +35,6 @@ const signInSlice = createSlice({
     }
 });
 
-export const { setUserEmail, setUserPwd, setErrMsg, setLoading, setOpen } = signInSlice.actions;
+export const { setFormData, clearFormData, setErrMsg, setLoading, setOpen } = signInSlice.actions;
 
 export default signInSlice.reducer;

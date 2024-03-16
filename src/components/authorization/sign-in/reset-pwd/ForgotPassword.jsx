@@ -1,12 +1,12 @@
 import { Alert, Box, Button, CircularProgress, Snackbar, Stack, TextField } from '@mui/material'
 import { selectData, setEmail, setErrMsg, setIsLoading, setIsOpen, setSuccessMsg } from 'features/main/mainSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAuth } from 'context/useAuth'
+import { UseAuth } from 'context/useAuth'
 
 const ForgotPassword = () => {
     const dispatch = useDispatch()
 
-    const { forgotPassword } = useAuth()
+    const { forgotPassword } = UseAuth()
     const { loading, email, errMsg, isOpen, successMsg } = useSelector(selectData)
 
     const closeSnackbar = (_, reason) => {

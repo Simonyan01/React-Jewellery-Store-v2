@@ -2,7 +2,7 @@ import { selectData, setPassword } from 'features/main/mainSlice'
 import { Box, Button, Stack, TextField } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAuth } from 'context/useAuth'
+import { UseAuth } from 'context/useAuth'
 
 const useQuery = () => new URLSearchParams(useLocation().search)
 
@@ -11,7 +11,7 @@ const ResetPassword = () => {
     const navigate = useNavigate()
     const query = useQuery()
 
-    const { resetPassword } = useAuth()
+    const { resetPassword } = UseAuth()
     const { password } = useSelector(selectData)
 
     const handleResetPassword = async () => {

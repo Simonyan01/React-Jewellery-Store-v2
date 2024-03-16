@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, confirmPasswordReset, onAuthStateChanged, sendPasswordResetEmail, signInWithPopup } from "firebase/auth"
+import { confirmPasswordReset, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth"
 import { createContext, useEffect, useState } from "react"
 import { auth } from "utils/firebase"
 
@@ -6,7 +6,6 @@ export const UserContext = createContext({
     currentUser: null,
     forgotPassword: () => Promise,
     resetPassword: () => Promise,
-    signInWithGoogle: () => Promise,
 })
 
 const UserContextProvider = ({ children }) => {
@@ -29,16 +28,10 @@ const UserContextProvider = ({ children }) => {
 
     const resetPassword = (oobCode, newPassword) => confirmPasswordReset(auth, oobCode, newPassword)
 
-    const signInWithGoogle = () => {
-        const provider = new GoogleAuthProvider()
-        return signInWithPopup(auth, provider)
-    }
-
     const value = {
         currentUser,
         forgotPassword,
         resetPassword,
-        signInWithGoogle
     }
 
     return (

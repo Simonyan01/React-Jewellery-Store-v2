@@ -1,0 +1,24 @@
+.loaderContainer {
+  @apply bg-white p-5 rounded-3xl shadow-lg;
+}
+.signUpContainer {
+  @apply bg-white w-full h-[400px] flex rounded-md shadow-lg select-none;
+  .jewelBg {
+    @apply h-full relative right-0 top-0 rounded-md w-full;
+  }
+  .textOnBg {
+    @apply absolute top-1/2 left-20 text-white font-Montserrat text-2xl font-bold;
+  }
+  .mainTitle {
+    @apply font-Montserrat font-semibold text-xl my-4 tracking-wide text-gray;
+  }
+  label {
+    @apply text-gray font-Roboto font-normal text-sm select-none ml-1 mb-2 flex;
+  }
+  .typing {
+    @apply bg-[#EBEBEB] rounded-2xl py-1 px-3 outline-none w-full;
+  }
+  .signUpButton {
+    @apply w-full rounded-3xl select-none my-4 bg-[#C10016] tracking-wider text-white font-semibold py-1;
+  }
+}
