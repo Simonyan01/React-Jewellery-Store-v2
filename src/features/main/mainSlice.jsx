@@ -74,58 +74,25 @@ export const deleteUserData = createAsyncThunk(
 )
 
 const initialState = {
-    activeHeart: null,
     anchorEl: null,
-    title: null,
-    image: null,
+    open: false,
     error: null,
-    id: null,
-    isOpen: false,
     loading: false,
-    description: [],
-    addedData: [],
-    images: [],
-    email: '',
-    password: '',
-    errMsg: '',
-    successMsg: '',
+    images: []
 }
 
 const mainSlice = createSlice({
     name: 'auth/main_section',
     initialState,
     reducers: {
-        saveCreatedPosts(state, action) {
-            state.image = action.payload.image;
-            state.title = action.payload.title;
-            state.id = action.payload.id;
-        },
-        setErrMsg(state, action) {
-            state.errMsg = action.payload
-        },
-        setEmail(state, action) {
-            state.email = action.payload
-        },
-        setPassword(state, action) {
-            state.password = action.payload
-        },
         setIsLoading(state, action) {
             state.loading = action.payload
         },
-        setIsOpen(state, action) {
-            state.isOpen = action.payload
-        },
-        setDescription(state, action) {
-            state.description = action.payload
-        },
-        setSuccessMsg(state, action) {
-            state.successMsg = action.payload
-        },
-        setAddedData(state, action) {
-            state.addedData = action.payload
-        },
         setAnchorEl(state, action) {
             state.anchorEl = action.payload
+        },
+        setIsOpen(state, action) {
+            state.open = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -172,9 +139,6 @@ const mainSlice = createSlice({
     }
 });
 
-export const {
-    saveCreatedPosts, setErrMsg, setPassword, setEmail, setIsOpen,
-    setIsLoading, setDescription, setAnchorEl, setAddedData,
-    setImages, setSuccessMsg } = mainSlice.actions;
+export const { setAnchorEl, setIsLoading, setIsOpen } = mainSlice.actions;
 
 export default mainSlice.reducer;

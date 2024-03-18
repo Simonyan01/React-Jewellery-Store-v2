@@ -1,0 +1,33 @@
+.toolbar {
+  @apply flex items-center justify-between h-full;
+  .siteIcon {
+    @apply select-none;
+  }
+  .searchBar {
+    @apply relative select-none;
+    input {
+      @apply bg-[#E8EAEB] placeholder:text-[#BABABA] outline-none placeholder:font-semibold px-4 placeholder:tracking-wider h-10 w-96 rounded-3xl;
+    }
+    .searchIconContainer {
+      @apply h-6 w-6 text-gray absolute top-1/2 right-1 transform bg-[#C10016] p-4 rounded-3xl -translate-y-1/2;
+      .searchIcon {
+        @apply relative right-2.5 bottom-3.5 cursor-pointer text-white;
+      }
+    }
+  }
+  .userName {
+    @apply text-base pl-2 text-[#4F4F4F] font-semibold tracking-wide;
+  }
+  .arrowDownIcon {
+    @apply text-[#4F4F4F];
+  }
+  .signUp {
+    @apply text-[#4F4F4F] font-semibold text-base;
+  }
+  .logoutIcon {
+    @apply text-[#939393];
+  }
+  .signIn {
+    @apply font-semibold transition-all duration-300 cursor-pointer hover:bg-black/10 px-3 py-1 rounded-md font-Montserrat tracking-wider;
+  }
+}

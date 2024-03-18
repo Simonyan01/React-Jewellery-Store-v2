@@ -1,9 +1,9 @@
-import { clearFormData, selectSignInData, setErrMsg, setFormData, setLoading, setOpen } from "features/auth/sign_in/signInSlice";
-import { saveCreatedUser, selectSignUpData } from "features/auth/sign_up/signUpSlice";
+import { clearFormData, selectSignInData, setErrMsg, setFormData, setIsLoading, setIsOpen } from "features/auth/sign_in/signInSlice";
 import { Alert, Box, CircularProgress, Snackbar, Stack } from "@mui/material";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import {  errorAlert, inputContainer } from "./styles";
 import styles from "./sign-in.module.scss"
 import { auth } from "utils/firebase";
 
@@ -14,13 +14,10 @@ const SignIn = () => {
     const { signInFormData, loading, errMsg, open } = useSelector(selectSignInData)
     const { userEmail, userPwd } = signInFormData
 
-    const { signUpFormData } = useSelector(selectSignUpData)
-    const { fullName } = signUpFormData
-
     const closeSnackbar = (_, reason) => {
         if (reason === 'clickaway') return
 
-        dispatch(setOpen(false))
+        dispatch(setIsOpen(false))
     };
 
     const handleChange = (e) => {
@@ -29,20 +26,13 @@ const SignIn = () => {
     };
 
     const handleSignIn = async (email, password) => {
-        dispatch(setLoading(true))
+        dispatch(setIsLoading(true))
         setTimeout(() => {
-            dispatch(setOpen(true));
+            dispatch(setIsOpen(true));
         }, 1000);
 
         try {
-            const { user } = await signInWithEmailAndPassword(auth, email, password);
-            // localStorage.setItem("user", JSON.stringify({ email }));
-
-            dispatch(saveCreatedUser({
-                email: user.email,
-                id: user.uid,
-                token: user.accessToken,
-            }));
+            await signInWithEmailAndPassword(auth, email, password);
             dispatch(clearFormData())
             navigate('/');
         } catch (err) {
@@ -53,12 +43,14 @@ const SignIn = () => {
                 errorMessage = "Invalid credentials. Please try again.";
             } else if (err.code === 'auth/too-many-requests') {
                 errorMessage = "Too many requests. Please try again later.";
+            } else if (err.code === 'auth/missing-password') {
+                errorMessage = "Missing Password. Please try again.";
             } else errorMessage = "An unexpected error occurred. Please try again.";
 
             dispatch(setErrMsg(errorMessage));
             console.warn(err);
         } finally {
-            dispatch(setLoading(false))
+            dispatch(setIsLoading(false))
         }
     }
 
@@ -79,13 +71,13 @@ const SignIn = () => {
                         <Alert
                             severity="error"
                             variant="filled"
-                            sx={{ fontSize: 18, mb: 4, fontFamily: "serif", letterSpacing: 1 }}
+                            sx={errorAlert}
                         >
                             {errMsg}
                         </Alert>
                     </Snackbar>
                 )}
-                <Stack sx={{ gap: 1, paddingX: 2, width: "270px" }}>
+                <Stack sx={inputContainer}>
                     <Box className={styles.mainTitle}>Вход</Box>
                     {inputFields.map(({ id, label, type }) => (
                         <Box key={id}>
@@ -99,24 +91,31 @@ const SignIn = () => {
                             />
                         </Box>
                     ))}
-                    <Box className="flex gap-2 select-none">
+                    <Box className={styles.textContainer}>
                         <input type="checkbox" />
-                        <span className={styles.saveMe}>Запомни меня</span>
+                        <span className={styles.rememberMeText}>Запомни меня</span>
                     </Box>
                     <button
                         className={styles.signInButton}
                         onClick={() => handleSignIn(userEmail, userPwd)}
-                        color="error">
+                        color="error"
+                    >
                         Вход
                     </button>
                     <Box className={styles.recovery}>
                         <Box className={styles.forgotPassText}>Забыли Пароль?</Box>
-                        <Link className="font-semibold" to="/forgot-password">Восстановить</Link>
+                        <Link className={styles.retry} to="/forgot-password">Восстановить</Link>
                     </Box>
                 </Stack>
-                <Box className="relative select-none">
-                    <img className={styles.jewelBg} src="/src/assets/auth_part.png" alt="Jewelry background" />
-                    <span className={styles.textOnBg}>Plard<span className="font-medium">Gold</span></span>
+                <Box className={styles.formBackgroundImg}>
+                    <img
+                        className={styles.jewelBg}
+                        src="/src/assets/auth_part.png"
+                        alt="Jewelry background"
+                    />
+                    <span className={styles.textOnBg}>Plard
+                        <span className={styles.partOfText}>Gold</span>
+                    </span>
                 </Box>
             </Box>
         )

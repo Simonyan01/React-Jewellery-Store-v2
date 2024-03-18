@@ -3,14 +3,20 @@
 }
 .signUpContainer {
   @apply bg-white w-full h-[400px] flex rounded-md shadow-lg select-none;
-  .jewelBg {
-    @apply h-full relative right-0 top-0 rounded-md w-full;
-  }
-  .textOnBg {
-    @apply absolute top-1/2 left-20 text-white font-Montserrat text-2xl font-bold;
+  .formBackgroundImg {
+    @apply relative select-none;
+    .jewelBg {
+      @apply h-full relative right-0 top-0 rounded-md w-full;
+    }
+    .textOnBg {
+      @apply absolute top-1/2 left-20 text-white  text-2xl font-bold;
+      .partOfText {
+        @apply font-medium;
+      }
+    }
   }
   .mainTitle {
-    @apply font-Montserrat font-semibold text-xl my-4 tracking-wide text-gray;
+    @apply font-semibold text-xl my-4 tracking-wide text-gray;
   }
   label {
     @apply text-gray font-Roboto font-normal text-sm select-none ml-1 mb-2 flex;

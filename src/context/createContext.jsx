@@ -4,8 +4,8 @@ import { auth } from "utils/firebase"
 
 export const UserContext = createContext({
     currentUser: null,
-    forgotPassword: () => Promise,
-    resetPassword: () => Promise,
+    forgotPassword: null,
+    resetPassword: null,
 })
 
 const UserContextProvider = ({ children }) => {

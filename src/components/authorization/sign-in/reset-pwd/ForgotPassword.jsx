@@ -1,13 +1,17 @@
-import { Alert, Box, Button, CircularProgress, Snackbar, Stack, TextField } from '@mui/material'
-import { selectData, setEmail, setErrMsg, setIsLoading, setIsOpen, setSuccessMsg } from 'features/main/mainSlice'
+import { selectSignInData, setEmail, setErrMsg, setIsLoading, setIsOpen, setSuccessMsg } from 'features/auth/sign_in/signInSlice'
+import { Alert, Box, CircularProgress, Snackbar, Stack } from '@mui/material'
+import { errorAlert, inputContainer, successAlert } from '../styles'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import styles from "./password.module.scss"
 import { UseAuth } from 'context/useAuth'
 
 const ForgotPassword = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const { forgotPassword } = UseAuth()
-    const { loading, email, errMsg, isOpen, successMsg } = useSelector(selectData)
+    const { loading, email, errMsg, open, successMsg } = useSelector(selectSignInData)
 
     const closeSnackbar = (_, reason) => {
         if (reason === 'clickaway') return
@@ -15,7 +19,11 @@ const ForgotPassword = () => {
         dispatch(setIsOpen(false))
     };
 
-    const handleForgotPassword = async () => {
+    const handleChange = (e) => {
+        dispatch(setEmail(e.target.value))
+    };
+
+    const handleForgotPassword = async (email) => {
         dispatch(setIsLoading(true))
 
         setTimeout(() => {
@@ -24,8 +32,10 @@ const ForgotPassword = () => {
 
         try {
             await forgotPassword(email)
-            dispatch(setSuccessMsg("Password reset email sent successfully."));
+            dispatch(setSuccessMsg("Password reset email sent successfully."))
             dispatch(setEmail(""))
+
+            setTimeout(() => navigate("/login"), 3000);
         } catch (err) {
             let errorMessage = '';
             if (err.code === 'auth/missing-email') {
@@ -42,45 +52,55 @@ const ForgotPassword = () => {
     }
 
     return (
-        <Box className="bg-white/65 p-8 rounded-xl w-max lg:w-[450px] shadow-lg">
-            {errMsg && (
-                <Snackbar open={isOpen} autoHideDuration={4000} onClose={closeSnackbar}>
-                    <Alert
-                        severity="error"
-                        variant="filled"
-                        sx={{ fontSize: 18, mb: 4 }}
-                    >
-                        {errMsg}
-                    </Alert>
-                </Snackbar>
-            )}
-            {successMsg && (
-                <Snackbar open={isOpen} autoHideDuration={4500} onClose={closeSnackbar}>
-                    <Alert severity="success" variant="filled" sx={{ fontSize: 18, mb: 4 }}>
-                        {successMsg}
-                    </Alert>
-                </Snackbar>
-            )}
-            <Stack spacing={3}>
-                <TextField
-                    fullWidth
-                    variant="filled"
-                    label="Email"
-                    type="email"
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => dispatch(setEmail(e.target.value))}
-                />
-                <Button
-                    color='success'
-                    variant='contained'
-                    type='submit'
-                    onClick={handleForgotPassword}
-                >
-                    {loading ? <CircularProgress color="inherit" size={30} /> : "Submit"}
-                </Button>
-            </Stack>
-        </Box>
+        loading ? (
+            <Box className={styles.loaderContainer}>
+                <CircularProgress color="success" size={50} />
+            </Box>
+        ) : (
+            <Box className={styles.forgotPwdContainer}>
+                {errMsg && (
+                    <Snackbar open={open} autoHideDuration={3000} onClose={closeSnackbar}>
+                        <Alert severity="error" variant="filled" sx={errorAlert}>
+                            {errMsg}
+                        </Alert>
+                    </Snackbar>
+                )}
+                {successMsg && (
+                    <Snackbar open={open} autoHideDuration={2000} onClose={closeSnackbar}>
+                        <Alert severity="success" variant="filled" sx={successAlert}>
+                            {successMsg}
+                        </Alert>
+                    </Snackbar>
+                )}
+                <Stack sx={inputContainer}>
+                    <Box className={styles.mainTitle}>Восстановление Пароля</Box>
+                    <span className={styles.exampleText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magnis a sapien tristique semper vulputate nisl. Laoreet pharetra donec diam fusce et.</span>                    <label htmlFor="email">Эл. адрес</label>
+                    <input
+                        id="email"
+                        className={styles.typing}
+                        value={email}
+                        type="email"
+                        onChange={handleChange}
+                    />
+                    <button
+                        className={styles.forgotPwdButton}
+                        onClick={() => handleForgotPassword(email)}
+                        color="error">
+                        Отправить
+                    </button>
+                    <Box className={styles.recovery}>
+                        <Box className={styles.forgotPassText}>Помните Свой Пароль??</Box>
+                        <Link className={styles.retry} to="/login">Попробовать Сново</Link>
+                    </Box>
+                </Stack>
+                <Box className={styles.formBackgroundImg}>
+                    <img className={styles.jewelBg} src="/src/assets/auth_part.png" alt="Jewelry background" />
+                    <span className={styles.textOnBg}>Plard
+                        <span className={styles.partOfText}>Gold</span>
+                    </span>
+                </Box>
+            </Box>
+        )
     )
 }
 

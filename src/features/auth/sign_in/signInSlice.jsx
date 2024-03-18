@@ -3,13 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 export const selectSignInData = state => state.signIn
 
 const initialState = {
+    email: '',
+    password: '',
     errMsg: '',
+    successMsg: '',
     loading: false,
     open: false,
     signInFormData: {
         userEmail: '',
         userPwd: '',
-    },
+    }
 }
 
 const signInSlice = createSlice({
@@ -26,15 +29,24 @@ const signInSlice = createSlice({
         setErrMsg(state, action) {
             state.errMsg = action.payload
         },
-        setLoading(state, action) {
+        setIsLoading(state, action) {
             state.loading = action.payload
         },
-        setOpen(state, action) {
+        setIsOpen(state, action) {
             state.open = action.payload
-        }
+        },
+        setEmail(state, action) {
+            state.email = action.payload
+        },
+        setPassword(state, action) {
+            state.password = action.payload
+        },
+        setSuccessMsg(state, action) {
+            state.successMsg = action.payload
+        },
     }
 });
 
-export const { setFormData, clearFormData, setErrMsg, setLoading, setOpen } = signInSlice.actions;
+export const { setFormData, setPassword, setEmail, clearFormData, setErrMsg, setIsLoading, setIsOpen, setSuccessMsg } = signInSlice.actions;
 
 export default signInSlice.reducer;

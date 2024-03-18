@@ -1,8 +1,8 @@
-import { Route, Routes, useRoutes } from "react-router-dom"
 import ForgotPassword from "components/authorization/sign-in/reset-pwd/ForgotPassword";
 import ResetPassword from "components/authorization/sign-in/reset-pwd/ResetPassword";
 import SignUp from "components/authorization/sign-up/SignUp";
 import SignIn from "components/authorization/sign-in/SignIn";
+import { Route, Routes, useRoutes } from "react-router-dom"
 import UserAccount from "components/account/UserAccount";
 
 const Router = () => {

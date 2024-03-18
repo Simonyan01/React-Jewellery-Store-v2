@@ -2,6 +2,7 @@ import { selectSignUpData, setErrMsg, setLoading, setOpen, saveCreatedUser, setF
 import { Alert, Box, CircularProgress, Snackbar, Stack, } from '@mui/material';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux"
+import { errorAlert, inputContainer } from './styles';
 import { useNavigate } from "react-router-dom";
 import styles from "./sign-up.module.scss"
 import { auth } from 'utils/firebase';
@@ -80,17 +81,17 @@ const SignUp = () => {
                         <Alert
                             severity="error"
                             variant="filled"
-                            sx={{ fontSize: 18, mb: 4, fontFamily: "serif", letterSpacing: 1 }}
+                            sx={errorAlert}
                         >
                             {errMsg}
                         </Alert>
                     </Snackbar>
                 )}
-                <Box className="relative select-none">
+                <Box className={styles.formBackgroundImg}>
                     <img className={styles.jewelBg} src="/src/assets/auth_part.png" alt="Jewelry background" />
-                    <span className={styles.textOnBg}>Plard<span className="font-medium">Gold</span></span>
+                    <span className={styles.textOnBg}>Plard<span className={styles.partOfText}>Gold</span></span>
                 </Box>
-                <Stack sx={{ gap: 1, paddingX: 2, width: "270px", height: "100%" }}>
+                <Stack sx={inputContainer}>
                     <Box className={styles.mainTitle}>Регистрация</Box>
                     {inputFields.map(({ id, label, type }) => (
                         <Box key={id}>

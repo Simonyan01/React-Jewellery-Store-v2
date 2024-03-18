@@ -1,7 +1,8 @@
-import { selectData, setPassword } from 'features/main/mainSlice'
-import { Box, Button, Stack, TextField } from '@mui/material'
+import { selectSignInData, setPassword } from 'features/auth/sign_in/signInSlice'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import styles from "../reset-pwd/password.module.scss"
+import { Box, Stack } from '@mui/material'
 import { UseAuth } from 'context/useAuth'
 
 const useQuery = () => new URLSearchParams(useLocation().search)
@@ -12,40 +13,38 @@ const ResetPassword = () => {
     const query = useQuery()
 
     const { resetPassword } = UseAuth()
-    const { password } = useSelector(selectData)
+    const { password } = useSelector(selectSignInData)
 
     const handleResetPassword = async () => {
         try {
-            resetPassword(query.get('oobCode'), password)
-            navigate("/login")
+            await resetPassword(query.get('oobCode'), password)
             dispatch(setPassword(""))
+            navigate("/login")
         } catch (err) {
             console.warn(err);
         }
     }
 
-    // console.log(query.get('mode'), query.get('oobCode'))
+    const handleChange = (e) => {
+        dispatch(setPassword(e.target.value))
+    };
 
     return (
-        <Box sx={{ width: 400 }} className="bg-white/65 p-6 rounded-xl shadow-lg">
+        <Box className={styles.resetPwdContainer}>
             <Stack spacing={2}>
-                <TextField
-                    required
-                    type='password'
-                    label='New password'
-                    variant='outlined'
-                    color='success'
+                <Box className={styles.mainTitle}>Введите новый пароль</Box>
+                <input
+                    className={styles.typing}
                     value={password}
-                    onChange={e => dispatch(setPassword(e.target.value))}
+                    type="password"
+                    onChange={handleChange}
                 />
-                <Button
-                    color='success'
-                    variant='contained'
-                    type='submit'
+                <button
+                    className={styles.sentButton}
                     onClick={handleResetPassword}
-                >
-                    Reset password
-                </Button>
+                    color="error">
+                    Отправить
+                </button>
             </Stack>
         </Box>
     )

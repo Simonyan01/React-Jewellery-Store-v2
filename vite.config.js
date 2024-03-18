@@ -15,6 +15,6 @@ export default defineConfig({
       utils: "/src/utils",
       api: "/src/api",
     },
-  }
+  },
 })
 
