@@ -12,7 +12,6 @@
 
 body {
   display: flex;
-  align-items: center;
   justify-content: center;
   font-family: "Montserrat", sans-serif;
   background-image: url("assets/main.png");
@@ -28,7 +27,7 @@ body::after {
   content: "";
   background: rgba(255, 255, 255, 0.5);
   position: absolute;
-  inset: 0;
   z-index: -1;
+  inset: 0;
 }
 

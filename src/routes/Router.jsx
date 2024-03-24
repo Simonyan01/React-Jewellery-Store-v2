@@ -3,11 +3,11 @@ import ResetPassword from "components/authorization/sign-in/reset-pwd/ResetPassw
 import SignUp from "components/authorization/sign-up/SignUp";
 import SignIn from "components/authorization/sign-in/SignIn";
 import { Route, Routes, useRoutes } from "react-router-dom"
-import UserAccount from "components/account/UserAccount";
+import MainPage from "components/main/MainPage";
 
 const Router = () => {
     const element = useRoutes([
-        { path: "/", element: <UserAccount /> },
+        { path: "/", element: <MainPage /> },
         { path: "/register", element: <SignUp /> },
         { path: "/login", element: <SignIn /> },
         { path: "/forgot-password", element: <ForgotPassword /> },

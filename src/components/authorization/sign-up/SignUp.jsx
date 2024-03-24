@@ -72,7 +72,7 @@ const SignUp = () => {
     return (
         loading ? (
             <Box className={styles.loaderContainer}>
-                <CircularProgress color="success" size={50} />
+                <CircularProgress color="error" size={50} />
             </Box>
         ) : (
             <Box className={styles.signUpContainer}>

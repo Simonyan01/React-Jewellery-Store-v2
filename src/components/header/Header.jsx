@@ -24,8 +24,9 @@ const Header = ({ isAuth, name }) => {
     const toggleIcon = (e) => dispatch(setAnchorEl(e.currentTarget))
 
     const handleLogout = () => {
+        localStorage.removeItem("user")
         dispatch(removeUser());
-        navigate('/login')
+        navigate('/')
     };
 
     return (

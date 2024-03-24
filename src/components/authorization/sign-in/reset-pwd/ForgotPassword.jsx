@@ -54,7 +54,7 @@ const ForgotPassword = () => {
     return (
         loading ? (
             <Box className={styles.loaderContainer}>
-                <CircularProgress color="success" size={50} />
+                <CircularProgress color="error" size={50} />
             </Box>
         ) : (
             <Box className={styles.forgotPwdContainer}>
@@ -67,7 +67,7 @@ const ForgotPassword = () => {
                 )}
                 {successMsg && (
                     <Snackbar open={open} autoHideDuration={2000} onClose={closeSnackbar}>
-                        <Alert severity="success" variant="filled" sx={successAlert}>
+                        <Alert severity="error" variant="filled" sx={successAlert}>
                             {successMsg}
                         </Alert>
                     </Snackbar>

@@ -1,13 +1,12 @@
 import { saveCreatedUser } from 'features/auth/sign_up/signUpSlice';
-import { Typography } from "@mui/material";
+import { ColorTabs } from './categories/ColorTabs';
+import Category from './categories/Category';
 import { useDispatch } from "react-redux";
-import { UseAuth } from "hooks/use-auth";
 import { useEffect } from 'react';
+import { Box } from '@mui/material';
 
-const UserAccount = () => {
+const MainPage = () => {
     const dispatch = useDispatch();
-
-    const { isAuth } = UseAuth()
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -16,10 +15,11 @@ const UserAccount = () => {
     }, [dispatch]);
 
     return (
-        <>
-            {isAuth && <Typography variant="h1" color={"ActiveBorder"}>Welcome!!!</Typography>}
-        </>
+        <Box className="px-8">
+            <Category />
+            <ColorTabs />
+        </Box>
     );
 };
 
-export default UserAccount;
+export default MainPage;

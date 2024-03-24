@@ -1,3 +1,39 @@
 {
-  "images": []
+  "category": [
+    {
+      "id": 1,
+      "name": "Кольцo",
+      "image": "/src/assets/category/image 3.png"
+    },
+    {
+      "id": 2,
+      "name": "Колье",
+      "image": "/src/assets/category/Rectangle 619.png"
+    },
+    {
+      "id": 3,
+      "name": "Серьги",
+      "image": "/src/assets/category/Rectangle 637.png"
+    },
+    {
+      "id": 4,
+      "name": "Цепь",
+      "image": "/src/assets/category/Rectangle 621.png"
+    },
+    {
+      "id": 5,
+      "name": "Брошь",
+      "image": "/src/assets/category/Rectangle 638.png"
+    },
+    {
+      "id": 6,
+      "name": "Кулоны",
+      "image": "/src/assets/category/Rectangle 623.png"
+    },
+    {
+      "id": 7,
+      "name": "Браслеты",
+      "image": "/src/assets/category/Rectangle 625.png"
+    }
+  ]
 }
