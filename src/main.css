@@ -21,6 +21,11 @@ body {
   max-width: 100%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 body::after {
   content: "";
   background: rgba(255, 255, 255, 0.5);

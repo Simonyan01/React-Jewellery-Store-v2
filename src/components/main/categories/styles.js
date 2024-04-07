@@ -21,6 +21,7 @@ const categoryItem = {
   paddingY: 1.3,
   paddingX: 5,
   borderRadius: 1,
+  zIndex: 4,
   "&:hover": {
     transition: "0.2s linear",
     backgroundColor: "rgb(250,250,250,0.7)",
@@ -142,7 +143,7 @@ const priceBox = {
 
 const cardContainer = {
   minWidth: 366,
-  minHeight: 620,
+  minHeight: 670,
   position: "absolute",
   top: "12.88%",
   left: 0,
@@ -151,7 +152,17 @@ const cardContainer = {
 
 const sliderContainer = { display: "grid", placeItems: "center" }
 
-const sliderSubContainer = { display: "grid", gap: 2.5, width: "80%" }
+const sliderSubContainer = { display: "grid", gap: 2, width: "85%" }
+
+const saveButton = {
+  position: "relative",
+  left: "12%",
+  marginTop: 1,
+  borderRadius: 25,
+  paddingX: 12,
+  backgroundColor: "#C10016",
+  boxShadow: "0px 3px 10px 2px #00000040",
+}
 
 export {
   categoryContainer,
@@ -170,4 +181,5 @@ export {
   cardContainer,
   sliderContainer,
   sliderSubContainer,
+  saveButton,
 }

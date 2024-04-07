@@ -7,7 +7,7 @@
 /* Filter styles */
 
 .filterContainer {
-  @apply flex items-center bg-red py-3 absolute left-0 top-[25%] z-50 rounded-e-2xl select-none cursor-pointer;
+  @apply flex items-center bg-red py-3 absolute hover:scale-110 hover:transition-all transition-all duration-300 hover:duration-300 left-0 top-[25%] z-50 rounded-e-2xl select-none cursor-pointer;
   .alignItems {
     @apply grid place-items-center;
     img {

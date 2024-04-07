@@ -1,7 +1,7 @@
-import { cardContainer, sliderContainer, sliderSubContainer } from "./styles";
+import { cardContainer, saveButton, sliderContainer, sliderSubContainer } from "./styles";
+import { Box, Card, CardContent, Slide, Button } from "@mui/material"
 import ToRightVector from "/src/assets/filter/to_right_vector.png";
 import ToLeftVector from "/src/assets/filter/to_left_vector.png";
-import { Box, Card, CardContent, Slide } from "@mui/material"
 import FilterIcon from "/src/assets/filter/filter_icon.png";
 import { InfoOutlined } from "@mui/icons-material";
 import CustomSlider from "./slider/CustomSlider";
@@ -12,6 +12,13 @@ const Filter = () => {
     const [checked, setChecked] = useState(false);
 
     const handleChange = () => setChecked((prev) => !prev);
+
+    const customSliders = [
+        { color: "error", label: "Вес золота" },
+        { color: "error", label: "Карат" },
+        { color: "error", label: "Цена" },
+        { color: "error", label: "Цена Производства" }
+    ];
 
     return (
         <>
@@ -30,12 +37,11 @@ const Filter = () => {
             >
                 <Card sx={cardContainer}>
                     <InfoOutlined color="error" className={styles.infoIcon} />
-                    <Box sx={sliderContainer}> 
+                    <Box sx={sliderContainer}>
                         <CardContent sx={sliderSubContainer}>
-                            <CustomSlider color="error" label="Вес золота" />
-                            <CustomSlider color="error" label="Карат" />
-                            <CustomSlider color="error" label="Цена" />
-                            <CustomSlider color="error" label="Цена Производства" />
+                            {customSliders.map(({ label, color }) => (
+                                <CustomSlider key={label} color={color} label={label} />
+                            ))}
                         </CardContent>
                     </Box>
                     <img
@@ -44,6 +50,9 @@ const Filter = () => {
                         src={ToLeftVector}
                         alt="left vector"
                     />
+                    <Button variant='contained' sx={saveButton}>
+                        Сохранить
+                    </Button>
                 </Card>
             </Slide>
         </>

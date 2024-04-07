@@ -1,0 +1,12 @@
+.sliderLabel {
+  @apply font-semibold text-sm;
+}
+.inputContainer {
+  @apply flex justify-evenly items-center select-none;
+  .inputValue {
+    @apply px-5 py-1 placeholder:text-center text-[#757575] text-center outline-none border-[1px] border-[#B3B3B4] rounded-md;
+  }
+  .separator {
+    @apply w-3 border-[#757575];
+  }
+}
