@@ -28,7 +28,7 @@ const Category = () => {
         )
     };
 
-    const handleClickIcon = (id) => dispatch(setActiveIcon(id === activeIcon ? null : id));
+    const handleClickIcon = (id) => dispatch(setActiveIcon(id));
 
     useEffect(() => {
         dispatch(getCategory());

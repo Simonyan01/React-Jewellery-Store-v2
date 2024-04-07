@@ -6,7 +6,7 @@ export const selectData = state => state.main
 // GET METHOD
 
 export const getCategory = createAsyncThunk(
-    "userPosts/getUserPosts",
+    "category/getCategory",
     async (_, thunkAPI) => {
         try {
             const res = await API.get("/category", {
@@ -17,6 +17,38 @@ export const getCategory = createAsyncThunk(
             return res?.data
         } catch (err) {
             return thunkAPI.rejectWithValue(err.message || "Failed to get category")
+        }
+    }
+)
+
+export const getTabsData = createAsyncThunk(
+    "tabsData/getTabsData",
+    async (_, thunkAPI) => {
+        try {
+            const res = await API.get("/tabsData", {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            return res?.data
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.message || "Failed to get tabs data")
+        }
+    }
+)
+
+export const getImages = createAsyncThunk(
+    "images/getImages",
+    async (_, thunkAPI) => {
+        try {
+            const res = await API.get("/images", {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            return res?.data
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.message || "Failed to get images")
         }
     }
 )
@@ -74,12 +106,15 @@ export const getCategory = createAsyncThunk(
 
 const initialState = {
     anchorEl: null,
+    selectedTabId: null,
     open: false,
     error: null,
     loading: false,
     activeIcon: "woman",
     page: "1",
-    category: []
+    category: [],
+    tabsData: [],
+    images: []
 }
 
 const mainSlice = createSlice({
@@ -101,10 +136,13 @@ const mainSlice = createSlice({
         setPage(state, action) {
             state.page = action.payload
         },
+        setSelectedTabId(state, action) {
+            state.selectedTabId = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
-            // GET
+            // GET CATEGORY
             .addCase(getCategory.pending, (state) => {
                 state.loading = true
             })
@@ -114,6 +152,32 @@ const mainSlice = createSlice({
                 state.error = null;
             })
             .addCase(getCategory.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
+            // GET TABS DATA
+            .addCase(getTabsData.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(getTabsData.fulfilled, (state, action) => {
+                state.tabsData = action.payload;
+                state.loading = false;
+                state.error = null;
+            })
+            .addCase(getTabsData.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
+            // GET IMAGES
+            .addCase(getImages.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(getImages.fulfilled, (state, action) => {
+                state.images = action.payload;
+                state.loading = false;
+                state.error = null;
+            })
+            .addCase(getImages.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             })
@@ -146,6 +210,6 @@ const mainSlice = createSlice({
     }
 });
 
-export const { setAnchorEl, setIsLoading, setIsOpen, setActiveIcon, setPage } = mainSlice.actions;
+export const { setAnchorEl, setIsLoading, setIsOpen, setActiveIcon, setPage, setSelectedTabId } = mainSlice.actions;
 
 export default mainSlice.reducer;

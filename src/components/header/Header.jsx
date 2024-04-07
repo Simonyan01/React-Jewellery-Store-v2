@@ -1,8 +1,9 @@
 import { appBar, createUser, divider, logoutContainer, paperStyles, personalContainer, personalText, searchIcon } from "./styles";
-import { AppBar, Box, Divider, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import { AppBar, Avatar, Box, Chip, Divider, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { selectData, setAnchorEl } from "features/main/mainSlice";
 import { removeUser } from "features/auth/sign_up/signUpSlice";
+import admin from "/src/assets/main/admin.jpg"
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom"
 import SearchIcon from '@mui/icons-material/Search';
@@ -33,7 +34,7 @@ const Header = ({ isAuth, name }) => {
         <AppBar position="fixed" color="inherit" sx={appBar}>
             <Toolbar className={styles.toolbar}>
                 <span className={styles.siteIcon}>
-                    <img src="/src/assets/site_icon.png" alt="site_icon" />
+                    <img src="/src/assets/main/site_icon.png" alt="site_icon" />
                 </span>
                 <Box className={styles.searchBar}>
                     <input type="search" placeholder="Поиск" />
@@ -47,13 +48,11 @@ const Header = ({ isAuth, name }) => {
                     <>
                         <IconButton
                             size="large"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
                             onClick={toggleIcon}
                             color="inherit"
                         >
-                            <AccountCircle fontSize="large" />
-                            <span className={styles.userName}>{name}</span>
+                            <Avatar src={admin} alt="Lyov's image" />
+                            <span className={styles.userName}>{name || "User"}</span>
                             <KeyboardArrowDownIcon fontSize="inherit" className={styles.arrowDownIcon} />
                         </IconButton>
                         <Menu

@@ -1,0 +1,29 @@
+/* Color tab styles */
+
+.tabList {
+  @apply w-full flex flex-grow gap-5;
+}
+
+/* Filter styles */
+
+.filterContainer {
+  @apply flex items-center bg-red py-3 absolute left-0 top-[25%] z-50 rounded-e-2xl select-none cursor-pointer;
+  .alignItems {
+    @apply grid place-items-center;
+    img {
+      @apply m-2 w-7;
+    }
+    .text {
+      @apply break-all w-[15px] text-lg font-semibold text-white;
+    }
+  }
+  .ToRightVector {
+    @apply w-[10px] relative right-2;
+  }
+}
+.infoIcon {
+  @apply m-3;
+}
+.ToLeftVector {
+  @apply bg-red py-5 cursor-pointer px-0.5 rounded-bl-md absolute top-0 right-0;
+}

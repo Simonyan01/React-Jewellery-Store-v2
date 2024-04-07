@@ -1,6 +1,8 @@
 import UserContextProvider from 'context/createContext.jsx'
 import Header from 'components/header/Header';
+import Footer from 'components/footer/Footer';
 import { UseAuth } from 'hooks/use-auth';
+import { Box } from '@mui/material';
 import Router from 'routes/Router';
 
 const App = () => {
@@ -8,9 +10,15 @@ const App = () => {
 
   return (
     <UserContextProvider>
-      <Header isAuth={isAuth} name={name} />
-      <Router />
+      <Box className="flex flex-col min-h-screen">
+        <Header isAuth={isAuth} name={name} />
+        <Box className="flex-1">
+          <Router />
+        </Box>
+        <Footer />
+      </Box>
     </UserContextProvider>
+
   )
 }
 

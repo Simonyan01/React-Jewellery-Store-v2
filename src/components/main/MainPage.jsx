@@ -15,7 +15,7 @@ const MainPage = () => {
     }, [dispatch]);
 
     return (
-        <Box className="px-8">
+        <Box className="px-12">
             <Category />
             <ColorTabs />
         </Box>

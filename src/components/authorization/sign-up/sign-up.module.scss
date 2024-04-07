@@ -25,6 +25,6 @@
     @apply bg-[#EBEBEB] rounded-2xl py-1 px-3 outline-none w-full;
   }
   .signUpButton {
-    @apply w-full rounded-3xl select-none my-4 bg-[#C10016] tracking-wider text-white font-semibold py-1;
+    @apply w-full rounded-3xl select-none my-4 bg-red tracking-wider text-white font-semibold py-1;
   }
 }

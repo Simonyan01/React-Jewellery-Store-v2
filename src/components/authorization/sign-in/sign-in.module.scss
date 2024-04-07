@@ -19,7 +19,7 @@
     }
   }
   .signInButton {
-    @apply w-full rounded-3xl select-none my-4 bg-[#C10016] tracking-wider text-white font-semibold py-1;
+    @apply w-full rounded-3xl select-none my-4 bg-red tracking-wider text-white font-semibold py-1;
   }
   .recovery {
     @apply tracking-wider select-none text-sm grid place-items-center mt-10;

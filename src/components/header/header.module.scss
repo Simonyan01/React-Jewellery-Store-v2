@@ -9,7 +9,7 @@
       @apply bg-[#E8EAEB] placeholder:text-[#BABABA] outline-none placeholder:font-semibold px-4 placeholder:tracking-wider h-10 w-96 rounded-3xl;
     }
     .searchIconContainer {
-      @apply h-6 w-6 text-gray absolute top-1/2 right-1 transform bg-[#C10016] p-4 rounded-3xl -translate-y-1/2;
+      @apply h-6 w-6 text-gray absolute top-1/2 right-1 transform bg-red p-4 rounded-3xl -translate-y-1/2;
       .searchIcon {
         @apply relative right-2.5 bottom-3.5 cursor-pointer text-white;
       }

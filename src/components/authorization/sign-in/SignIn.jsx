@@ -110,7 +110,7 @@ const SignIn = () => {
                 <Box className={styles.formBackgroundImg}>
                     <img
                         className={styles.jewelBg}
-                        src="/src/assets/auth_part.png"
+                        src="/src/assets/main/auth_part.png"
                         alt="Jewelry background"
                     />
                     <span className={styles.textOnBg}>Plard
