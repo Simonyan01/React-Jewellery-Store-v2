@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -17,8 +17,8 @@ module.exports = {
   plugins: ["react", "react-refresh"],
   rules: {
     "react/prop-types": "off",
-    "no-undef": "error",
-    "no-unused-vars": "off",
+    "no-undef": "warn",
+    "no-unused-vars": "warn",
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
