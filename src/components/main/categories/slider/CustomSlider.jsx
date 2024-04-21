@@ -1,6 +1,7 @@
-import { Slider, Box, Button } from '@mui/material';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, Fragment } from 'react';
+import { Slider, Box } from '@mui/material';
 import styles from "./styles.module.scss";
+import { sliderStyles } from './styles';
 
 const CustomSlider = ({ label, color }) => {
     const [value, setValue] = useState([300, 700]);
@@ -30,19 +31,6 @@ const CustomSlider = ({ label, color }) => {
         <>
             <label className={styles.sliderLabel}>{label}</label>
             <Slider
-                sx={{
-                    ".MuiSlider-track": {
-                        backgroundColor: "#C10016",
-                        height: 6
-                    },
-                    ".MuiSlider-rail": {
-                        backgroundColor: "#575757",
-                        height: 6,
-                    },
-                    ".MuiSlider-thumb": {
-                        backgroundColor: "#C10016",
-                    }
-                }}
                 min={0}
                 max={1000}
                 color={color}
@@ -51,22 +39,26 @@ const CustomSlider = ({ label, color }) => {
                 valueLabelDisplay="auto"
                 disableSwap
                 step={25}
+                sx={{
+                    ".MuiSlider-track": sliderStyles.track,
+                    ".MuiSlider-rail": sliderStyles.rail,
+                    ".MuiSlider-thumb": sliderStyles.thumb
+                }}
             />
             <Box className={styles.inputContainer}>
-                {value.map((val, i) => (
-                    <>
+                {value.map((value, i) => (
+                    <Fragment key={i}>
                         <input
-                            key={i}
                             min={0}
                             max={1000}
                             type="number"
-                            value={val}
+                            value={value}
                             className={styles.inputValue}
                             onChange={(value) => handleChangeRange(i, value)}
                             placeholder={i === 0 ? 'От' : 'До'}
                         />
                         {i === 0 && <hr className={styles.separator} />}
-                    </>
+                    </Fragment>
                 ))}
             </Box>
         </>

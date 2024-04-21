@@ -105,16 +105,17 @@ export const getImages = createAsyncThunk(
 // )
 
 const initialState = {
+    error: null,
     anchorEl: null,
     selectedTabId: null,
     open: false,
-    error: null,
     loading: false,
-    activeIcon: "woman",
+    checked: false,
     page: "1",
+    activeIcon: "woman",
+    images: [],
     category: [],
     tabsData: [],
-    images: []
 }
 
 const mainSlice = createSlice({
@@ -138,6 +139,9 @@ const mainSlice = createSlice({
         },
         setSelectedTabId(state, action) {
             state.selectedTabId = action.payload
+        },
+        setChecked(state, action) {
+            state.checked = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -210,6 +214,6 @@ const mainSlice = createSlice({
     }
 });
 
-export const { setAnchorEl, setIsLoading, setIsOpen, setActiveIcon, setPage, setSelectedTabId } = mainSlice.actions;
+export const { setAnchorEl, setIsLoading, setIsOpen, setChecked, setActiveIcon, setPage, setSelectedTabId } = mainSlice.actions;
 
 export default mainSlice.reducer;
