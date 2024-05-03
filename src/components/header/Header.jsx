@@ -1,14 +1,13 @@
 import { appBar, createUser, divider, logoutContainer, paperStyles, personalContainer, personalText, searchIcon } from "./styles";
-import { AppBar, Avatar, Box, Chip, Divider, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import { AppBar, Avatar, Box, Divider, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { selectData, setAnchorEl } from "features/main/mainSlice";
 import { removeUser } from "features/auth/sign_up/signUpSlice";
-import admin from "/src/assets/main/admin.jpg"
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom"
 import SearchIcon from '@mui/icons-material/Search';
-import { AccountCircle } from "@mui/icons-material";
 import Logout from '@mui/icons-material/Logout';
+import admin from "/src/assets/main/admin.jpg"
 import styles from "./header.module.scss"
 
 const Header = ({ isAuth, name }) => {

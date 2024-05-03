@@ -17,12 +17,8 @@ module.exports = {
   plugins: ["react", "react-refresh"],
   rules: {
     "react/prop-types": "off",
-    "no-undef": "warn",
+    "no-undef": "error",
     "no-unused-vars": "warn",
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
-    ],
+    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
   },
 }
-
