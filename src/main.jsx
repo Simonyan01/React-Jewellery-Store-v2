@@ -10,9 +10,9 @@ const domNode = document.getElementById('root')
 const root = createRoot(domNode)
 
 root.render(
-    <Provider store={store}>
-        <BrowserRouter>
+    <BrowserRouter>
+        <Provider store={store}>
             <App />
-        </BrowserRouter>
-    </Provider>
+        </Provider>
+    </BrowserRouter>
 )

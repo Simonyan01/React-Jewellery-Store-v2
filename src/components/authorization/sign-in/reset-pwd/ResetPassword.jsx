@@ -1,8 +1,8 @@
 import { selectSignInData, setPassword } from 'features/auth/sign_in/signInSlice'
+import { Box, CircularProgress, Stack } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from "../reset-pwd/password.module.scss"
-import { Box, CircularProgress, Stack } from '@mui/material'
 import { UseAuth } from 'context/useAuth'
 
 const useQuery = () => new URLSearchParams(useLocation().search)
