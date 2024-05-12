@@ -32,7 +32,7 @@ const signInSlice = createSlice({
         setIsLoading(state, action) {
             state.loading = action.payload
         },
-        setIsOpen(state, action) {
+        setOpen(state, action) {
             state.open = action.payload
         },
         setEmail(state, action) {
@@ -47,6 +47,6 @@ const signInSlice = createSlice({
     }
 });
 
-export const { setFormData, setPassword, setEmail, clearFormData, setErrMsg, setIsLoading, setIsOpen, setSuccessMsg } = signInSlice.actions;
+export const { setFormData, setPassword, setEmail, clearFormData, setErrMsg, setIsLoading, setOpen, setSuccessMsg } = signInSlice.actions;
 
 export default signInSlice.reducer;

@@ -12,19 +12,19 @@ const Router = () => {
         { path: "/login", element: <SignIn /> },
         { path: "/forgot-password", element: <ForgotPassword /> },
         { path: "/reset", element: <ResetPassword /> }
-    ])
+    ]);
 
     const routes = [
-        { path: '/' },
-        { path: '/register' },
-        { path: '/login' },
-        { path: '/forgot-password' },
-        { path: '/reset' },
+        { id: 1, path: '/' },
+        { id: 2, path: '/register' },
+        { id: 3, path: '/login' },
+        { id: 4, path: '/forgot-password' },
+        { id: 5, path: '/reset' },
     ];
 
     return (
         <Routes>
-            {routes.map(({ path }, i) => <Route key={i} path={path} element={element} />)}
+            {routes.map(({ path, id }) => <Route key={id} path={path} element={element} />)}
         </Routes>
     )
 }

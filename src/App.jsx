@@ -1,12 +1,12 @@
 import UserContextProvider from 'context/createContext.jsx'
 import Header from 'components/header/Header';
 import Footer from 'components/footer/Footer';
-import { UseAuth } from 'hooks/use-auth';
+import { useAuth } from 'hooks/use-auth';
 import { Box } from '@mui/material';
 import Router from 'routes/Router';
 
 const App = () => {
-  const { isAuth, name } = UseAuth()
+  const { isAuth, name } = useAuth()
 
   return (
     <UserContextProvider>

@@ -1,4 +1,4 @@
-import { selectSignInData, setEmail, setErrMsg, setIsLoading, setIsOpen, setSuccessMsg } from 'features/auth/sign_in/signInSlice'
+import { selectSignInData, setEmail, setErrMsg, setIsLoading, setOpen, setSuccessMsg } from 'features/auth/sign_in/signInSlice'
 import { Alert, Box, CircularProgress, Snackbar, Stack } from '@mui/material'
 import { errorAlert, inputContainer, successAlert } from '../styles'
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,7 +16,7 @@ const ForgotPassword = () => {
     const closeSnackbar = (_, reason) => {
         if (reason === 'clickaway') return
 
-        dispatch(setIsOpen(false))
+        dispatch(setOpen(false))
     };
 
     const handleChange = (e) => {
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
         dispatch(setIsLoading(true))
 
         setTimeout(() => {
-            dispatch(setIsOpen(true));
+            dispatch(setOpen(true));
         }, 1000);
 
         try {
@@ -74,7 +74,8 @@ const ForgotPassword = () => {
                 )}
                 <Stack sx={inputContainer}>
                     <Box className={styles.mainTitle}>Восстановление Пароля</Box>
-                    <span className={styles.exampleText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magnis a sapien tristique semper vulputate nisl. Laoreet pharetra donec diam fusce et.</span>                    <label htmlFor="email">Эл. адрес</label>
+                    <span className={styles.exampleText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magnis a sapien tristique semper vulputate nisl. Laoreet pharetra donec diam fusce et.</span>
+                    <label htmlFor="email">Эл. адрес</label>
                     <input
                         id="email"
                         className={styles.typing}

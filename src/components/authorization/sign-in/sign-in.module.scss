@@ -1,8 +1,8 @@
 .loaderContainer {
-  @apply bg-white p-5 rounded-3xl shadow-lg;
+  @apply bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5 rounded-3xl shadow-lg;
 }
 .signInContainer {
-  @apply bg-white w-full h-[400px] flex rounded-md shadow-lg select-none;
+  @apply bg-white absolute top-1/2 left-1/2 w-max transform -translate-x-1/2 -translate-y-1/2 h-[420px] flex rounded-md shadow-lg select-none;
   .mainTitle {
     @apply font-semibold text-xl my-4 tracking-wide text-gray;
   }
