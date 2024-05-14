@@ -1,15 +1,8 @@
+import { setLoading, setOpen, saveCreatedUser, setErrMsg, clearFormData, setFormData } from "features/auth/sign_up/signUpSlice"
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { auth } from "utils/firebase"
-import {
-  setLoading,
-  setOpen,
-  saveCreatedUser,
-  setErrMsg,
-  clearFormData,
-  setFormData,
-} from "features/auth/sign_up/signUpSlice"
 
 export const useSignUp = () => {
   const navigate = useNavigate()

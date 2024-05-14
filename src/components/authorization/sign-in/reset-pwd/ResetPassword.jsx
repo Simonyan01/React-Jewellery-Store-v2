@@ -1,33 +1,11 @@
-import { selectSignInData, setPassword } from 'features/auth/sign_in/signInSlice'
-import { Box, CircularProgress, Stack } from '@mui/material'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import styles from "../reset-pwd/password.module.scss"
-import { UseAuth } from 'context/useAuth'
-
-const useQuery = () => new URLSearchParams(useLocation().search)
+import { selectSignInData } from 'features/auth/sign_in/signInSlice'
+import { Box, CircularProgress } from '@mui/material'
+import ResetPasswordForm from './ResetPasswordForm'
+import styles from "./styles/password.module.scss"
+import { useSelector } from 'react-redux'
 
 const ResetPassword = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const query = useQuery()
-
-    const { resetPassword } = UseAuth()
-    const { loading, password } = useSelector(selectSignInData)
-
-    const handleResetPassword = async () => {
-        try {
-            await resetPassword(query.get('oobCode'), password)
-            dispatch(setPassword(""))
-            navigate("/login")
-        } catch (err) {
-            console.warn(err);
-        }
-    }
-
-    const handleChange = (e) => {
-        dispatch(setPassword(e.target.value))
-    };
+    const { loading } = useSelector(selectSignInData)
 
     return (
         loading ? (
@@ -36,21 +14,7 @@ const ResetPassword = () => {
             </Box>
         ) : (
             <Box className={styles.resetPwdContainer}>
-                <Stack spacing={2}>
-                    <Box className={styles.mainTitle}>Введите новый пароль</Box>
-                    <input
-                        className={styles.typing}
-                        value={password}
-                        type="password"
-                        onChange={handleChange}
-                    />
-                    <button
-                        className={styles.sendButton}
-                        onClick={handleResetPassword}
-                        color="error">
-                        Войти
-                    </button>
-                </Stack>
+                <ResetPasswordForm />
             </Box>
         )
     )

@@ -2,7 +2,7 @@
   @apply bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  p-5 rounded-3xl shadow-lg;
 }
 .signUpContainer {
-  @apply bg-white absolute top-1/2 left-1/2 w-max transform -translate-x-1/2 -translate-y-1/2 h-[420px] flex rounded-md shadow-lg select-none;
+  @apply bg-white absolute top-1/4 left-1/3 w-max h-[420px] flex rounded-md shadow-lg select-none;
   .formBackgroundImg {
     @apply relative select-none;
     .jewelBg {

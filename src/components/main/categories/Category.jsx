@@ -1,4 +1,4 @@
-import { categoryContainer, categoryItem, genderIcon, increment } from './styles';
+import { categoryContainer, categoryItem, genderIcon, increment } from './styles/styles';
 import { getCategory, selectData, setActiveIcon } from 'features/main/mainSlice';
 import { Box, MenuItem, MenuList } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";

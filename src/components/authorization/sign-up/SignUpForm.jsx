@@ -5,7 +5,7 @@ import { inputContainer } from './styles';
 import { Box, Stack } from '@mui/material';
 import { useSignUp } from './createUser';
 
-const InputContainer = () => {
+const SignUpForm = () => {
 
     const { handleSignUp, handleChange } = useSignUp();
 
@@ -45,4 +45,4 @@ const InputContainer = () => {
     )
 }
 
-export default InputContainer
+export default SignUpForm

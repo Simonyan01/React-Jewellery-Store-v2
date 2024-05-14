@@ -1,7 +1,7 @@
 import { useState, useCallback, Fragment } from 'react';
+import styles from "./styles/styles.module.scss";
+import { sliderStyles } from './styles/styles';
 import { Slider, Box } from '@mui/material';
-import styles from "./styles.module.scss";
-import { sliderStyles } from './styles';
 
 const CustomSlider = ({ label, color }) => {
     const [value, setValue] = useState([300, 700]);

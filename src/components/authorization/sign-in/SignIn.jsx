@@ -1,21 +1,21 @@
 import { selectSignInData } from "features/auth/sign_in/signInSlice";
-import InputContainer from "./InputContainer";
+import styles from "./styles/sign-in.module.scss"
+import SignInForm from "./SignInForm";
 import ErrorSnackbar from "./ErrorSnackbar";
-import styles from "./sign-in.module.scss"
 import { useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import Loading from "./Loading";
 
 const SignIn = () => {
-    const { userEmail, userPwd, loading } = useSelector(selectSignInData)
+    const { open, errMsg, userEmail, userPwd, loading } = useSelector(selectSignInData)
 
     return (
         loading ? (
             <Loading />
         ) : (
             <Box className={styles.signInContainer}>
-                <ErrorSnackbar />
-                <InputContainer userEmail={userEmail} userPwd={userPwd} />
+                {errMsg && <ErrorSnackbar open={open} />}
+                <SignInForm userEmail={userEmail} userPwd={userPwd} />
                 <Box className={styles.formBackgroundImg}>
                     <img
                         className={styles.jewelBg}

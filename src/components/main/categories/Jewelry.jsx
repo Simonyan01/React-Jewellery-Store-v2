@@ -1,4 +1,4 @@
-import { codeBox, jewelryContainer, jewelryItem, priceBox, textBox } from "./styles";
+import { codeBox, jewelryContainer, jewelryItem, priceBox, textBox } from "./styles/styles";
 import { getImages, selectData } from "features/main/mainSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { Box, MenuList } from "@mui/material";

@@ -1,4 +1,4 @@
-import { cardContainer, saveButton, sliderContainer, sliderSubContainer } from "./styles";
+import { cardContainer, saveButton, sliderContainer, sliderSubContainer } from "./styles/styles";
 import { Box, Card, CardContent, Button, Backdrop } from "@mui/material"
 import ToRightVector from "/src/assets/filter/to_right_vector.png";
 import ToLeftVector from "/src/assets/filter/to_left_vector.png";
@@ -7,7 +7,7 @@ import FilterIcon from "/src/assets/filter/filter_icon.png";
 import { useDispatch, useSelector } from "react-redux";
 import { InfoOutlined } from "@mui/icons-material";
 import CustomSlider from "./slider/CustomSlider";
-import styles from "./styles.module.scss"
+import styles from "./styles/styles.module.scss"
 
 const Filter = () => {
     const dispatch = useDispatch()

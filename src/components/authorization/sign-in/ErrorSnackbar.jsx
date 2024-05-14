@@ -1,9 +1,9 @@
 import { selectSignInData, setOpen } from 'features/auth/sign_in/signInSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { Alert, Snackbar } from '@mui/material'
-import { errorAlert } from './styles'
+import { errorAlert } from './styles/styles'
 
-const ErrorSnackbar = () => {
+const ErrorSnackbar = ({ open }) => {
     const dispatch = useDispatch()
 
     const { errMsg } = useSelector(selectSignInData)

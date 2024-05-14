@@ -1,4 +1,4 @@
-import { createUser, divider, logoutContainer, paperStyles, personalContainer, personalText } from "./styles";
+import { createUser, divider, logoutContainer, paperStyles, personalContainer, personalText } from "./styles/styles";
 import { Avatar, Box, Divider, IconButton, Menu, MenuItem } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { selectData, setAnchorEl } from "features/main/mainSlice";
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import admin from "/src/assets/main/admin.jpg"
-import styles from "./header.module.scss"
+import styles from "./styles/header.module.scss"
 
 const AuthenticatedUser = ({ name }) => {
     const dispatch = useDispatch();

@@ -14,19 +14,15 @@ const ErrorSnackbar = () => {
         dispatch(setOpen(false))
     };
     return (
-        <>
-            {errMsg && (
-                <Snackbar open={open} autoHideDuration={3000} onClose={closeSnackbar}>
-                    <Alert
-                        severity="error"
-                        variant="filled"
-                        sx={errorAlert}
-                    >
-                        {errMsg}
-                    </Alert>
-                </Snackbar>
-            )}
-        </>
+        <Snackbar open={open} autoHideDuration={3000} onClose={closeSnackbar}>
+            <Alert
+                severity="error"
+                variant="filled"
+                sx={errorAlert}
+            >
+                {errMsg}
+            </Alert>
+        </Snackbar>
     )
 }
 
