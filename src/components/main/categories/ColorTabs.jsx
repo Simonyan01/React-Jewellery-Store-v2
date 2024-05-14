@@ -1,9 +1,9 @@
 import { getTabsData, selectData, setPage, setSelectedTabId } from 'features/main/mainSlice';
-import { borderStyles, increment, tabContainer, tabList, tabStyles } from './styles';
+import { borderStyles, increment, tabContainer, tabList, tabStyles } from './styles/styles';
 import { Box, MenuItem, MenuList } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import TabContext from '@mui/lab/TabContext';
-import styles from "./styles.module.scss"
+import styles from "./styles/styles.module.scss"
 import TabList from '@mui/lab/TabList';
 import Tab from '@mui/material/Tab';
 import { useEffect } from 'react';

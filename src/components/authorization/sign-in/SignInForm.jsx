@@ -1,14 +1,14 @@
 import { selectSignInData } from "features/auth/sign_in/signInSlice";
+import styles from "./styles/sign-in.module.scss"
+import { inputContainer } from "./styles/styles";
 import { Box, Stack } from "@mui/material";
-import { inputContainer } from "./styles";
-import styles from "./sign-in.module.scss"
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useSignIn } from "./saveUser";
+import { useSignIn } from "./useSignIn";
 
-
-const InputContainer = ({ userEmail, userPwd }) => {
+const SignInForm = ({ userEmail, userPwd }) => {
     const { handleSignIn, handleChange } = useSignIn()
+
     const { signInFormData } = useSelector(selectSignInData)
 
     const inputFields = [
@@ -50,4 +50,4 @@ const InputContainer = ({ userEmail, userPwd }) => {
     )
 }
 
-export default InputContainer
+export default SignInForm

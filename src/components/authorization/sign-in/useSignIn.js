@@ -1,14 +1,8 @@
+import { clearFormData, setErrMsg, setFormData, setIsLoading, setOpen } from "features/auth/sign_in/signInSlice"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { auth } from "utils/firebase"
-import {
-  clearFormData,
-  setErrMsg,
-  setFormData,
-  setIsLoading,
-  setOpen,
-} from "features/auth/sign_in/signInSlice"
 
 export const useSignIn = () => {
   const dispatch = useDispatch()
@@ -45,5 +39,6 @@ export const useSignIn = () => {
       dispatch(setIsLoading(false))
     }
   }
+
   return { handleChange, handleSignIn }
 }

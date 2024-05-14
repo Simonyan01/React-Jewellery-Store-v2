@@ -1,5 +1,5 @@
 import { Box, CircularProgress } from '@mui/material'
-import styles from "./sign-in.module.scss"
+import styles from "./styles/sign-in.module.scss"
 
 const Loading = () => {
     return (

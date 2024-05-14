@@ -1,9 +1,9 @@
 import AuthenticatedUser from "./AuthenticatedUser";
 import { AppBar, Toolbar } from "@mui/material";
-import styles from "./header.module.scss"
+import styles from "./styles/header.module.scss"
 import { Link } from "react-router-dom"
 import SearchBar from "./SearchBar";
-import { appBar } from "./styles";
+import { appBar } from "./styles/styles";
 
 const Header = ({ isAuth, name }) => {
     return (
@@ -15,7 +15,7 @@ const Header = ({ isAuth, name }) => {
                     alt="site_icon"
                 />
                 <SearchBar />
-                {isAuth ? (
+                {!isAuth ? (
                     <Link to='/login' className={styles.signIn}>Вход</Link>
                 ) : (
                     <AuthenticatedUser name={name} />

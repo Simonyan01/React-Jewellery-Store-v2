@@ -1,6 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search';
-import styles from "./header.module.scss"
-import { searchIcon } from './styles';
+import styles from "./styles/header.module.scss"
+import { searchIcon } from './styles/styles';
 import { Box } from "@mui/material"
 
 const SearchBar = () => {
